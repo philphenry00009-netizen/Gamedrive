@@ -1,4 +1,4 @@
-name: Build Game Space Pro APK
+name: Build Game Space Plus APK
 on: [push, workflow_dispatch]
 
 jobs:
@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q GameSpacePro.zip
+      - run: unzip -q GameSpacePlus.zip
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -15,9 +15,9 @@ jobs:
         with:
           gradle-version: 8.7
       - name: Build APK
-        working-directory: GameSpacePro
+        working-directory: GameSpacePlus
         run: gradle assembleRelease
       - uses: actions/upload-artifact@v4
         with:
-          name: GameSpacePro-apk
-          path: GameSpacePro/app/build/outputs/apk/release/*.apk
+          name: GameSpacePlus-apk
+          path: GameSpacePlus/app/build/outputs/apk/release/*.apk
